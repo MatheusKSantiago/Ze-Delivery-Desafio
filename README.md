@@ -46,3 +46,24 @@ Retornar um parceiro específico baseado no seu campo `id` com todos os campos a
 
 ### 1.3. Buscar parceiro:
 Dada uma localização pelo usuário da API (coordenadas `long` e `lat`), procure o parceiro que esteja **mais próximo** e **que cuja área de cobertura inclua** a localização.
+
+# Como Executar
+
+1. **Gerar a imagem com Docker**  
+   ```bash
+   docker build -t zeDeliveryImage .
+2. **Iniciar o Container com a Imagem Gerada**
+
+   ```bash
+   docker run -d -p 5432:5432 zeDeliveryImage
+
+3. Você pode utilizar o Postman ou outro cliente HTTP para enviar o arquivo parceiros.json para o endpoint `/api/parceiro/batch`. Isso carregará os parceiros de teste no banco de dados.
+
+# Endpoints
+
+| Método | Endpoint                             | Descrição                                                  |
+|--------|--------------------------------------|-----------------------------------------------------------|
+| GET    | `/api/parceiro/{id}`                | Retorna os detalhes de um parceiro com base no ID fornecido. |
+| GET    | `/api/parceiro/{longitude}/{latitude}` | Retorna o parceiro mais próximo às coordenadas fornecidas. |
+| POST   | `/api/parceiro/batch`               | Carrega parceiros em batch enviando um arquivo JSON.       |
+
